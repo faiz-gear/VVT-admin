@@ -145,7 +145,9 @@ module.exports = {
     'no-extra-boolean-cast': 'warn',
     'no-case-declarations': 'warn',
     'no-async-promise-executor': 'warn',
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'vue/no-lone-template': 'off',
+    'vue/no-v-for-template-key-on-child': 'off'
   },
   globals: {
     defineProps: 'readonly',
