@@ -2,7 +2,7 @@
   <div class="components-demo">
     <RouterView v-slot="{ Component }">
       <template v-if="Component">
-        <Transition mode="out-in" name="vvtl-transition">
+        <Transition mode="out-in" name="slide-right">
           <component :is="Component"></component>
         </Transition>
       </template>

@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseTransition: typeof import('./src/components/transition/src/BaseTransition.vue')['default']
     BreadCrumbs: typeof import('./src/components/breadcrumbs/src/BreadCrumbs.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -28,13 +29,16 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElToggle: typeof import('element-plus/es')['ElToggle']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Form: typeof import('./src/components/form/src/Form.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Table: typeof import('./src/components/table/src/Table.vue')['default']
+    Transition: typeof import('./src/components/transition/src/Transition.vue')['default']
   }
 }
 

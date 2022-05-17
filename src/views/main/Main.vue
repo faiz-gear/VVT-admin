@@ -9,7 +9,7 @@
         <el-main class="main-content"
           ><RouterView v-slot="{ Component }">
             <template v-if="Component">
-              <Transition mode="out-in" name="vvtl-transition" appear>
+              <Transition mode="out-in" name="slide-right" appear>
                 <component :is="Component"></component>
               </Transition>
             </template> </RouterView

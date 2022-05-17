@@ -14,7 +14,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
+      ]
     }),
     viteCompression({
       verbose: true,
@@ -32,7 +36,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/style/main.scss";'
+        additionalData: `@use "@/style/element/index.scss" as *;`
       }
     }
   },

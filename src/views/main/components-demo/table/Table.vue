@@ -4,7 +4,7 @@
       ref="VVTTableRef"
       v-bind="tableConfig"
       :table-data="showTableData"
-      :page-count="Math.ceil(tableData.length / tableConfig.paginationProp.pageSize)"
+      :page-count="Math.ceil(tableData.length / tableConfig.paginationProp.pageSize!)"
       @current-change="handleCurrentChange"
       @size-change="handleSizeChange"
     >
