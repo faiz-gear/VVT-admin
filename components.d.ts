@@ -22,7 +22,6 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
@@ -33,10 +32,9 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Form: typeof import('./src/components/form/src/Form.vue')['default']
-    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Table: typeof import('./src/components/table/src/Table.vue')['default']
     Transition: typeof import('./src/components/transition/src/Transition.vue')['default']
   }
 }
 
-export {}
+export { }
