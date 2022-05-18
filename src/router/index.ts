@@ -1,14 +1,14 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 16:52:34
- * @LastEditTime : 2022-04-27 18:33:01
+ * @LastEditTime : 2022-05-18 15:37:53
  * @LastEditors  : 卢瑶
  * @Description  : 路由出口文件
- * @FilePath     : /vite-vue3-ts-ly/src/router/index.ts
+ * @FilePath     : /vvt-admin/src/router/index.ts
  */
 
 import { GLOBAL_VARIABLE_NAME } from '@/setting/app'
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -35,7 +35,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 
