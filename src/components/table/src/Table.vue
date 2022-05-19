@@ -8,7 +8,7 @@
             <el-icon
               :color="color"
               class="vvt-table-header-left-icon"
-              @mouseenter="color = '#1a9df9'"
+              @mouseenter="color = '#002c55'"
               @mouseleave="color = 'black'"
               ><info-filled
             /></el-icon>
@@ -52,7 +52,7 @@
 import { ref } from 'vue'
 import type { ITableColumn, ITableProp, IPaginationProp } from './table-type'
 import { ElLoading } from 'element-plus'
-import 'element-plus/es/components/loading/style/css'
+// import 'element-plus/es/components/loading/style/css'
 import type { LoadingOptions } from 'element-plus'
 import { LoadingInstance } from 'element-plus/es/components/loading/src/loading'
 

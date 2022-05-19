@@ -1,3 +1,4 @@
+
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
@@ -23,3 +24,4 @@
   //   'default': 40px,
   // )
 );
+@import 'element-plus/theme-chalk/src/loading.scss'; // 修复service方式调用el-loading没有样式问题

@@ -1,9 +1,7 @@
 <template>
   <el-menu
     :default-active="defaultActive"
-    background-color="#606266"
-    text-color="#fff"
-    active-text-color="#409EFF"
+    background-color="#fff"
     class="el-menu-vertical-demo"
     style="height: 100%"
     :collapse="isCollapse"

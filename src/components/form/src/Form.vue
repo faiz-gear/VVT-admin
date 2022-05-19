@@ -59,7 +59,6 @@
  * 功能6: 通过插槽自定义头部尾部的内容
  */
 import { FormInstance, FormItemProp, FormValidateCallback, FormValidationResult } from 'element-plus'
-import { Arrayable } from 'element-plus/lib/utils'
 import { onMounted, ref, watch } from 'vue'
 
 import { IFormItem, IColLayout, IFormProp } from './form-type'
@@ -98,7 +97,7 @@ const emits = defineEmits<{
 
 const elFormRef = ref<FormInstance>()
 const validate = ref<(callback?: FormValidateCallback | undefined) => FormValidationResult>()
-const resetFields = ref<(props?: Arrayable<FormItemProp>) => void>()
+const resetFields = ref<(props?: FormItemProp | FormItemProp[]) => void>()
 
 defineExpose({
   validate,

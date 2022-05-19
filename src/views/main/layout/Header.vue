@@ -43,6 +43,7 @@ watchEffect(() => {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  color: #fff;
   .icon {
     margin-right: 20px;
     cursor: pointer;

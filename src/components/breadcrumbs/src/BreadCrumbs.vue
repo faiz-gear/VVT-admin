@@ -21,4 +21,11 @@ const props = withDefaults(
 )
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+:deep(.el-breadcrumb) {
+  .el-breadcrumb__inner.is-link,
+  .el-breadcrumb__inner a {
+    color: #fff;
+  }
+}
+</style>
