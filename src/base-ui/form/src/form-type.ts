@@ -33,6 +33,8 @@ export interface IFormItem {
   otherOptions?: any
   // 当前表单是否隐藏
   isHidden?: boolean
+  // 单个表单元素的栅格布局配置
+  colLayout?: IColLayout
 }
 
 // form 属性

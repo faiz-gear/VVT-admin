@@ -4,7 +4,7 @@
       ref="VVTTableRef"
       v-bind="tableConfig"
       :table-data="showTableData"
-      :page-count="Math.ceil(tableData.length / tableConfig.paginationProp.pageSize!)"
+      :total="tableData.length"
       @current-change="handleCurrentChange"
       @size-change="handleSizeChange"
     >
@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
 import { ref, onMounted } from 'vue'
-import VVTTable from '../../../../components/table'
+import VVTTable from '@/base-ui/table'
 import tableConfig from './config/table.config'
 
 const VVTTableRef = ref<InstanceType<typeof VVTTable>>()

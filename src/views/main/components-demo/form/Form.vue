@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import VVTForm from '../../../../components/form/index'
+import VVTForm from '@/base-ui/form/index'
 import formConfig from './config/form.config'
 
 const vvtFormRef = ref<InstanceType<typeof VVTForm>>()

@@ -1,11 +1,12 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-15 10:53:52
- * @LastEditTime : 2022-04-28 16:07:35
+ * @LastEditTime : 2022-05-27 15:15:27
  * @LastEditors  : 卢瑶
  * @Description  : Table组件类型声明
- * @FilePath     : /vite-vue3-ts-ly/src/components/table/src/table-type.ts
+ * @FilePath     : /vvt-admin/src/base-ui/table/src/table-type.ts
  */
+import { LoadingOptions } from 'element-plus'
 import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
 
 export type AlignType = 'left' | 'center' | 'right' // 对齐方式
@@ -52,6 +53,7 @@ export interface ITableProp<T = any> {
   sumText?: string // 合计行第一列的文本
   summaryMethod?: (param: ISummaryMethodProp<T>) => void // 自定义求和逻辑,返回求和的结果数组
   spanMethod?: (param: ISpanMethodProps<T>) => void // 合并行或列,返回[rowSpan, colSpan]数组或者{ rowSpan, colSpan}对象
+  maxHeight?: string | number // Table的最大高度
 }
 
 // pagination 属性
@@ -64,8 +66,17 @@ export interface IPaginationProp {
   pagerCount?: number // 最大页码按钮数  5 <= x <= 21的奇数
 }
 
+export type PaginationJustifyType = 'flex-start' | 'center' | 'flex-end'
+
 export interface ITable<T> {
   tableColumns: ITableColumn[]
   tableProp: ITableProp<T>
+  showPagination?: boolean
   paginationProp: IPaginationProp
+  paginationJustify?: PaginationJustifyType
+  loadingOptions?: LoadingOptions
+  tableTitle?: string
+  tableTips?: string
+  showTableTitle?: boolean
+  showTableTips?: boolean
 }

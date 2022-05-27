@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import VVTBreadCrumbs, { IBreadcrumb } from '@/components/breadcrumbs'
+import VVTBreadCrumbs, { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
 
@@ -30,7 +30,7 @@ const emits = defineEmits<{
   (e: 'update:is-collapse', isCollapse: boolean): void
 }>()
 
-const userName = mainStore.username || localStorage.getItem('vvtl-username')
+const userName = mainStore.username || localStorage.getItem('vvt-username')
 
 const breadcrumbs = ref<IBreadcrumb[]>([])
 watchEffect(() => {

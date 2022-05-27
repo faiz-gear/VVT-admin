@@ -1,4 +1,4 @@
 export const GLOBAL_VARIABLE_NAME = {
-  USERNAME: 'vvtl_username',
-  TOKEN: 'vvtl_access_token'
+  USERNAME: 'vvt_username',
+  TOKEN: 'vvt_access_token'
 }

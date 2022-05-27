@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1 class="project-name">VVTL-admin</h1>
+    <h1 class="project-name">VVT-admin</h1>
     <h2 class="bounce-in-top">登录</h2>
     <el-card shadow="always" class="login-card slide-in-left">
       <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="80px" size="large">
@@ -8,7 +8,7 @@
           <el-input v-model="loginInfo.username" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="loginInfo.password" type="password" show-password />
+          <el-input v-model="loginInfo.password" type="password" show-password @keyup.enter="handleLoginClick" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width: 100%; margin-top: 10px" @click="handleLoginClick">登录</el-button>

@@ -1,13 +1,13 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-25 16:32:13
- * @LastEditTime : 2022-04-28 19:31:41
+ * @LastEditTime : 2022-05-27 15:25:55
  * @LastEditors  : 卢瑶
  * @Description  :
- * @FilePath     : /vite-vue3-ts-ly/src/views/main/components-demo/table/config/table.config.ts
+ * @FilePath     : /vvt-admin/src/views/main/components-demo/table/config/table.config.ts
  */
 import { ref } from 'vue'
-import type { ISpanMethodProps, ITable } from '../../../../../components/table/src/table-type'
+import type { ISpanMethodProps, ITable } from '../../../../../base-ui/table/src/table-type'
 
 interface ITableData {
   id: string
@@ -66,15 +66,7 @@ const tableConfig = ref<ITable<ITableData>>({
     defaultSort: { prop: 'date', order: 'ascending' },
     emptyText: '暂无数据',
     showSummary: true,
-    sumText: '合计',
-    spanMethod: ({ row, column, rowIndex, columnIndex }: ISpanMethodProps<ITableData>) => {
-      if (columnIndex === 1) {
-        if (rowIndex % 3 === 0) {
-          return [2, 1]
-        }
-        return [0, 0]
-      }
-    }
+    sumText: '合计'
   },
   paginationProp: {
     small: true,
@@ -83,7 +75,8 @@ const tableConfig = ref<ITable<ITableData>>({
     pageSizes: [5, 10, 15],
     layout: 'prev, pager, next, jumper, ->, total, sizes',
     pagerCount: 5
-  }
+  },
+  paginationJustify: 'flex-start'
 })
 
 export default tableConfig

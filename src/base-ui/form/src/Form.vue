@@ -6,7 +6,7 @@
     <el-form ref="elFormRef" :model="formData" v-bind="formProp">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
-          <el-col v-bind="colLayout">
+          <el-col v-bind="{ ...colLayout, ...item.colLayout }">
             <el-form-item
               v-if="!item.isHidden"
               :label="item.label"

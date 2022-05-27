@@ -1,14 +1,14 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-26 18:59:23
- * @LastEditTime : 2022-04-28 17:38:55
+ * @LastEditTime : 2022-05-27 15:13:24
  * @LastEditors  : 卢瑶
  * @Description  :
- * @FilePath     : /vite-vue3-ts-ly/src/views/main/components-demo/form/config/form.config.ts
+ * @FilePath     : /vvt-admin/src/views/main/components-demo/form/config/form.config.ts
  */
 
 import { reactive } from 'vue'
-import { IForm } from '../../../../../components/form'
+import { IForm } from '../../../../../base-ui/form'
 
 const formConfig = reactive<IForm>({
   formItems: [
@@ -23,7 +23,14 @@ const formConfig = reactive<IForm>({
           message: '用户名不能为空',
           trigger: 'change'
         }
-      ]
+      ],
+      colLayout: {
+        xs: 24,
+        sm: 24,
+        md: 12,
+        lg: 6,
+        xl: 5
+      }
     },
     {
       field: 'password',
@@ -36,7 +43,14 @@ const formConfig = reactive<IForm>({
           message: '密码不能为空',
           trigger: 'change'
         }
-      ]
+      ],
+      colLayout: {
+        xs: 24,
+        sm: 24,
+        md: 12,
+        lg: 6,
+        xl: 5
+      }
     },
     {
       field: 'role',
@@ -59,6 +73,13 @@ const formConfig = reactive<IForm>({
       ],
       otherOptions: {
         valueKey: 'label'
+      },
+      colLayout: {
+        xs: 24,
+        sm: 24,
+        md: 12,
+        lg: 6,
+        xl: 5
       }
     },
     {
@@ -69,6 +90,13 @@ const formConfig = reactive<IForm>({
         type: 'datetime',
         format: 'YYYY/MM/DD HH:mm:ss',
         valueFormat: 'YYYY/MM/DD HH:mm:ss'
+      },
+      colLayout: {
+        xs: 24,
+        sm: 24,
+        md: 12,
+        lg: 6,
+        xl: 9
       }
     }
   ],

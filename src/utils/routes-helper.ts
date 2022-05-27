@@ -1,4 +1,4 @@
-import { IBreadcrumb } from '@/components/breadcrumbs'
+import { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 
 export function mapRouteToBreadcrumbs(

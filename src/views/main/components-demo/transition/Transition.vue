@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import VVTTransition, { TransitionName, TransitionOrigin } from '@/components/transition'
+import VVTTransition, { TransitionName, TransitionOrigin } from '@/base-ui/transition'
 import { ref } from 'vue'
 
 const showSquare = ref(true)

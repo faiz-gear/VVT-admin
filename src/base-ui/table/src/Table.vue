@@ -3,12 +3,12 @@
     <div class="vvt-table-header">
       <div class="vvt-table-header-left">
         <slot name="header-left">
-          <div class="vvt-table-header-left-title">{{ tableTitle }}</div>
-          <el-tooltip class="box-item" effect="dark" :content="tableTips" placement="right">
+          <div v-if="showTableTitle" class="vvt-table-header-left-title">{{ tableTitle }}</div>
+          <el-tooltip v-if="showTableTips" class="box-item" effect="dark" :content="tableTips" placement="right">
             <el-icon
               :color="color"
               class="vvt-table-header-left-icon"
-              @mouseenter="color = '#002c55'"
+              @mouseenter="color = '#1a9df9'"
               @mouseleave="color = 'black'"
               ><info-filled
             /></el-icon>
@@ -30,7 +30,7 @@
           :align="tableColumn.align || 'center'"
           :type="tableColumn.type || ''"
         >
-          <slot v-if="!tableColumn.type" :name="tableColumn.slotName" :row="row">
+          <slot v-if="!filterSlotType.includes(tableColumn.type!)" :name="tableColumn.slotName" :row="row">
             {{ row[tableColumn.prop] }}
           </slot>
         </el-table-column>
@@ -39,8 +39,8 @@
     <template v-if="showPagination">
       <el-pagination
         v-bind="paginationProp"
-        :total="pageCount"
-        :page-count="pageCount"
+        :total="total"
+        :style="{ justifyContent: paginationJustify }"
         @size-change="handlePageSizeChange"
         @current-change="emits('current-change', $event)"
       />
@@ -50,9 +50,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { ITableColumn, ITableProp, IPaginationProp } from './table-type'
+import type { ITableColumn, ITableProp, IPaginationProp, PaginationJustifyType } from './table-type'
 import { ElLoading } from 'element-plus'
-// import 'element-plus/es/components/loading/style/css'
 import type { LoadingOptions } from 'element-plus'
 import { LoadingInstance } from 'element-plus/es/components/loading/src/loading'
 
@@ -63,10 +62,13 @@ const props = withDefaults(
     tableProp: ITableProp
     showPagination?: boolean
     paginationProp?: IPaginationProp
-    pageCount?: number
+    paginationJustify?: PaginationJustifyType
+    total?: number
     loadingOptions?: LoadingOptions
     tableTitle?: string
     tableTips?: string
+    showTableTitle?: boolean
+    showTableTips?: boolean
   }>(),
   {
     showPagination: true,
@@ -75,7 +77,8 @@ const props = withDefaults(
       small: false,
       background: false
     }),
-    pageCount: 1,
+    paginationJustify: 'center',
+    total: 1,
     loadingOptions: () => ({
       target: '.el-table',
       fullscreen: false,
@@ -83,7 +86,9 @@ const props = withDefaults(
       text: 'loading...'
     }),
     tableTitle: '基础表格',
-    tableTips: '温馨提醒'
+    tableTips: '温馨提醒',
+    showTableTitle: true,
+    showTableTips: true
   }
 )
 
@@ -92,6 +97,8 @@ const emits = defineEmits<{
   (e: 'size-change', size: number): void
   (e: 'current-change', size: number): void
 }>()
+
+const filterSlotType = ['selection', 'index']
 
 const pageSize = ref(props.paginationProp!.pageSize)
 const handlePageSizeChange = (size: number) => {
@@ -143,7 +150,6 @@ const color = ref('black')
   }
   :deep(.el-pagination) {
     margin-top: 15px;
-    justify-content: center !important;
     .el-pagination__rightwrapper {
       flex: unset;
     }

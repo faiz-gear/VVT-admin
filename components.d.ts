@@ -4,7 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BreadCrumbs: typeof import('./src/components/breadcrumbs/src/BreadCrumbs.vue')['default']
+    BreadCrumbs: typeof import('./src/base-ui/breadcrumbs/src/BreadCrumbs.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -31,9 +31,9 @@ declare module 'vue' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    Form: typeof import('./src/components/form/src/Form.vue')['default']
-    Table: typeof import('./src/components/table/src/Table.vue')['default']
-    Transition: typeof import('./src/components/transition/src/Transition.vue')['default']
+    Form: typeof import('./src/base-ui/form/src/Form.vue')['default']
+    Table: typeof import('./src/base-ui/table/src/Table.vue')['default']
+    Transition: typeof import('./src/base-ui/transition/src/Transition.vue')['default']
   }
 }
 
