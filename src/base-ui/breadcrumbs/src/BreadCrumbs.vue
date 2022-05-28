@@ -1,14 +1,34 @@
 <template>
   <div class="vvt-breadcrumbs">
-    <el-breadcrumb :separator="separator">
+    <el-breadcrumb :separator="separator" style="--el-text-color-regular: #fff">
       <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.name">
-        <el-breadcrumb-item :to="breadcrumb.path">{{ breadcrumb.name }}</el-breadcrumb-item>
+        <el-breadcrumb-item
+          >{{ breadcrumb.name }}
+          <el-dropdown v-if="breadcrumb.children">
+            <span class="el-dropdown-link">
+              <el-icon class="el-icon--right">
+                <arrow-down />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item
+                  v-for="item in breadcrumb.children"
+                  :key="item.name"
+                  @click="router.push(item.path)"
+                  >{{ item.name }}</el-dropdown-item
+                >
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </el-breadcrumb-item>
       </template>
     </el-breadcrumb>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { IBreadcrumb } from './breadcrumbs-type'
 const props = withDefaults(
   defineProps<{
@@ -19,13 +39,8 @@ const props = withDefaults(
     separator: '/'
   }
 )
+
+const router = useRouter()
 </script>
 
-<style scoped lang="scss">
-:deep(.el-breadcrumb) {
-  .el-breadcrumb__inner.is-link,
-  .el-breadcrumb__inner a {
-    color: #fff;
-  }
-}
-</style>
+<style scoped></style>

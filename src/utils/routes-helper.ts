@@ -19,7 +19,11 @@ export function mapRouteToBreadcrumbs(
       _recurseGetBreadcrumbs(currentRoute, route.children ?? []) &&
         breadcrumbs.push({
           name: route.meta!.title as string,
-          path: route.meta!.fullPath as string
+          path: route.meta!.fullPath as string,
+          children: route.children?.map((route) => ({
+            name: route.meta!.title as string,
+            path: route.meta!.fullPath as string
+          }))
         })
     }
   }

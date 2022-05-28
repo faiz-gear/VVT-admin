@@ -5,7 +5,7 @@
         <el-header class="main-header"><Header v-model:isCollapse="isCollapse"></Header></el-header>
         <el-container>
           <el-aside :width="isCollapse ? '64px' : '200px'" class="main-aside"
-            ><Menu :is-collapse="isCollapse"></Menu
+            ><Menu :is-collapse="isCollapse" :routes="routes"></Menu
           ></el-aside>
           <el-main class="main-content"
             ><RouterView v-slot="{ Component }">
@@ -22,11 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import Menu from './layout/Menu.vue'
-import Header from './layout/Header.vue'
+import Menu from '@/layout/Menu.vue'
+import Header from '@/layout/Header.vue'
 import { ref } from 'vue'
+import useMainStore from '@/store/main'
+
+const mainStore = useMainStore()
 
 const isCollapse = ref(false)
+
+const routes = ref(mainStore.routes)
+const dashboardRouteIndex = routes.value.findIndex((route) => route.name === 'dashboard')
+const dashboardRoute = routes.value.splice(dashboardRouteIndex, 1)
+routes.value.unshift(dashboardRoute[0])
 </script>
 
 <style scoped lang="scss">
