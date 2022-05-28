@@ -15,7 +15,9 @@
           </el-tooltip>
         </slot>
       </div>
-      <div class="vvt-table-header-right"></div>
+      <div class="vvt-table-header-right">
+        <slot name="header-right"></slot>
+      </div>
     </div>
     <el-table
       style="width: 100%"
