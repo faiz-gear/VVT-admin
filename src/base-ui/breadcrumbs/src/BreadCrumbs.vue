@@ -4,7 +4,7 @@
       <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.name">
         <el-breadcrumb-item
           >{{ breadcrumb.name }}
-          <el-dropdown v-if="breadcrumb.children">
+          <el-dropdown v-if="breadcrumb.children && breadcrumb.children.length > 0">
             <span class="el-dropdown-link">
               <el-icon class="el-icon--right">
                 <arrow-down />

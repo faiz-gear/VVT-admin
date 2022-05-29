@@ -7,27 +7,29 @@ export function mapRouteToBreadcrumbs(
 ): IBreadcrumb[] {
   const breadcrumbs: IBreadcrumb[] = []
 
-  const _recurseGetBreadcrumbs = (currentRoute: RouteLocationNormalizedLoaded, routes: RouteRecordRaw[]) => {
-    for (const route of routes) {
-      if (route.name === currentRoute.name) {
-        breadcrumbs.push({
-          name: route.meta!.title as string,
-          path: route.meta!.fullPath as string
-        })
-        return true
-      }
-      _recurseGetBreadcrumbs(currentRoute, route.children ?? []) &&
-        breadcrumbs.push({
-          name: route.meta!.title as string,
-          path: route.meta!.fullPath as string,
-          children: route.children?.map((route) => ({
-            name: route.meta!.title as string,
-            path: route.meta!.fullPath as string
-          }))
-        })
+  // 扁平化路由
+  const routesMap = new Map()
+  const stack = routes.slice()
+  while (stack.length) {
+    const top = stack[0]
+    routesMap.set(top.name, top)
+    stack.shift()
+    if (top.children && top.children.length > 0) {
+      stack.push(...top.children)
     }
   }
-  _recurseGetBreadcrumbs(currentRoute, routes)
-
-  return breadcrumbs.reverse()
+  // 当前路由 --> breadcrumbs
+  routesMap.forEach((route, key) => {
+    if (currentRoute.fullPath.includes(key)) {
+      breadcrumbs.push({
+        name: route.meta!.title as string,
+        path: route.meta!.fullPath as string,
+        children: route.children?.map((item: any) => ({
+          name: item.meta!.title as string,
+          path: item.meta!.fullPath as string
+        }))
+      })
+    }
+  })
+  return breadcrumbs
 }
