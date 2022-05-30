@@ -8,8 +8,8 @@
             <el-icon
               :color="color"
               class="vvt-table-header-left-icon"
-              @mouseenter="color = '#1a9df9'"
-              @mouseleave="color = 'black'"
+              @mouseenter="color = infoIconActiveColor"
+              @mouseleave="color = infoIconInactiveColor"
               ><info-filled
             /></el-icon>
           </el-tooltip>
@@ -56,6 +56,7 @@ import type { ITableColumn, ITableProp, IPaginationProp, PaginationJustifyType }
 import { ElLoading } from 'element-plus'
 import type { LoadingOptions } from 'element-plus'
 import { LoadingInstance } from 'element-plus/es/components/loading/src/loading'
+import { useCssVar } from '@vueuse/core'
 
 const props = withDefaults(
   defineProps<{
@@ -128,7 +129,9 @@ defineExpose({
   endLoading
 })
 
-const color = ref('black')
+const infoIconActiveColor = useCssVar('--el-color-primary')
+const infoIconInactiveColor = useCssVar('--el-color-info-dark-2')
+const color = ref(infoIconInactiveColor.value)
 </script>
 
 <style scoped lang="scss">

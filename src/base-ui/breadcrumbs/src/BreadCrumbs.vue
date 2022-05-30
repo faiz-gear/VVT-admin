@@ -1,6 +1,6 @@
 <template>
   <div class="vvt-breadcrumbs">
-    <el-breadcrumb :separator="separator" style="--el-text-color-regular: #fff">
+    <el-breadcrumb :separator="separator">
       <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.name">
         <el-breadcrumb-item
           >{{ breadcrumb.name }}

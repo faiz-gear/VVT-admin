@@ -42,13 +42,13 @@ routes.value.unshift(dashboardRoute[0])
   padding: 10px 15px;
   box-sizing: border-box;
   height: 100%;
-  background-color: #f0f2f5;
+  background-color: var(--el-main-bg-color);
   &-container {
     height: 100%;
   }
   &-header {
     border-radius: 5px 5px 0 0;
-    background: #606266;
+    background: var(--el-header-dark-bg);
   }
   &-aside {
     transition: 0.5s all cubic-bezier(0.645, 0.045, 0.355, 1);

@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" style="height: 100%" :collapse="isCollapse">
+  <el-menu :default-active="defaultActive" style="height: 100%" :collapse="isCollapse">
     <template v-for="route in routes" :key="route.name">
       <SubMenu v-if="route.children?.length !== 0" :index="route.meta!.title" :route="route"></SubMenu>
       <el-menu-item v-else :index="route.meta!.title" @click="router.push(route.meta!.fullPath as string)">
