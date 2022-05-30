@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import Menu from '@/layout/Menu.vue'
+import Menu from '@/layout/aside/Menu.vue'
 import Header from '@/layout/Header.vue'
 import { ref } from 'vue'
 import useMainStore from '@/store/main'

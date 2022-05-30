@@ -1,8 +1,8 @@
 <template>
   <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" style="height: 100%" :collapse="isCollapse">
     <template v-for="route in routes" :key="route.name">
-      <SubMenu v-if="route.children?.length !== 0" :index="route.path" :route="route"></SubMenu>
-      <el-menu-item v-else :index="route.path" @click="router.push(route.meta!.fullPath as string)">
+      <SubMenu v-if="route.children?.length !== 0" :index="route.meta!.title" :route="route"></SubMenu>
+      <el-menu-item v-else :index="route.meta!.title" @click="router.push(route.meta!.fullPath as string)">
         <el-icon v-if="route.meta!.icon"><component :is="route.meta!.icon"></component></el-icon>
         <template #title>{{ route.meta!.title }}</template>
       </el-menu-item>
@@ -25,7 +25,7 @@ const currentRoute = useRoute()
 
 const defaultActive = ref('')
 watchEffect(() => {
-  defaultActive.value = currentRoute.name as string
+  defaultActive.value = currentRoute.meta.title as string
 })
 </script>
 <style scoped></style>

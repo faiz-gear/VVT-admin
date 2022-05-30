@@ -1,14 +1,14 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-26 18:59:23
- * @LastEditTime : 2022-05-27 15:13:24
+ * @LastEditTime : 2022-05-30 10:05:43
  * @LastEditors  : 卢瑶
  * @Description  :
- * @FilePath     : /vvt-admin/src/views/main/components-demo/form/config/form.config.ts
+ * @FilePath     : /vvt-admin/src/views/main/components-demo/form/basic/config/form.config.ts
  */
 
 import { reactive } from 'vue'
-import { IForm } from '../../../../../base-ui/form'
+import { IForm } from '../../../../../../base-ui/form'
 
 const formConfig = reactive<IForm>({
   formItems: [
