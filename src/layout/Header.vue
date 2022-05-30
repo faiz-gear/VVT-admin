@@ -14,7 +14,6 @@
           inline-prompt
           :active-icon="'Sunny'"
           :inactive-icon="'Moon'"
-          @change="toggleDark"
         />
       </div>
       <div class="header-action-item">
@@ -25,12 +24,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import VVTBreadCrumbs, { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
-import { useDark, useToggle } from '@vueuse/core'
+import { GLOBAL_VARIABLE_NAME } from '@/setting/app'
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -50,8 +49,18 @@ watchEffect(() => {
   breadcrumbs.value = mapRouteToBreadcrumbs(route, mainStore.routes)
 })
 
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+const isDark = computed<boolean>({
+  get() {
+    document.documentElement.setAttribute('class', mainStore.theme)
+    return mainStore.theme === 'dark'
+  },
+  set(newValue) {
+    const theme = newValue ? 'dark' : 'light'
+    document.documentElement.setAttribute('class', theme)
+    mainStore.setTheme(theme)
+    localStorage.setItem(GLOBAL_VARIABLE_NAME.THEME, theme)
+  }
+})
 </script>
 
 <style scoped lang="scss">
