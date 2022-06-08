@@ -1,6 +1,6 @@
 <template>
   <div class="vvt-transition">
-    <Transition :name="name" :mode="mode" @before-enter="beforeEnter" @before-leave="beforeLeave"
+    <Transition :name="name" :mode="mode" :appear="appear" @before-enter="beforeEnter" @before-leave="beforeLeave"
       ><slot></slot
     ></Transition>
   </div>
@@ -9,11 +9,19 @@
 <script setup lang="ts">
 import { TransitionMode, TransitionOrigin } from './transition-type'
 
-const props = defineProps<{
-  name: string
-  mode?: TransitionMode
-  origin?: TransitionOrigin
-}>()
+const props = withDefaults(
+  defineProps<{
+    name: string
+    mode?: TransitionMode
+    origin?: TransitionOrigin
+    appear?: boolean
+  }>(),
+  {
+    mode: 'default',
+    origin: 'center',
+    appear: true
+  }
+)
 
 const beforeEnter = (el: HTMLElement) => {
   el.style.transformOrigin = props.origin ?? 'center'
