@@ -4,10 +4,7 @@
   "version": "1.0.0-beta-1",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:config": "vite build && esno ./script/buildWithConfig.ts ",
-    "build:dev": "vite build --mode development",
-    "build:pro": "vite build --mode production",
+    "build": "vite build && esno ./script/buildWithConfig.ts",
     "build:staging": "vite build --mode staging && esno ./script/buildWithConfig.ts ",
     "preview": "vite preview",
     "prettier": "prettier --write .",
