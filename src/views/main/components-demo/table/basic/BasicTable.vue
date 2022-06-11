@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { ref, onMounted } from 'vue'
 import VVTTable from '@/base-ui/table'
 import tableConfig from './config/table.config'

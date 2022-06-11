@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1 class="project-name">VVT-admin</h1>
+    <h1 class="project-name">{{ VITE_GLOB_APP_NAME }}</h1>
     <h2 class="bounce-in-top">登录</h2>
     <el-card shadow="always" class="login-card slide-in-left">
       <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="80px" size="large">
@@ -23,10 +23,13 @@ import { ref, reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
 import useMainStore from '../../store/main'
-import { GLOBAL_VARIABLE_NAME } from '@/setting/app'
+import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
+import { useGlobSetting } from '@/hooks/setting'
 
 const router = useRouter()
 const mainStore = useMainStore()
+
+const { VITE_GLOB_APP_NAME } = useGlobSetting()
 
 const formRef = ref<FormInstance>()
 const rules = reactive<FormRules>({

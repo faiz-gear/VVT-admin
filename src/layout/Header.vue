@@ -29,7 +29,7 @@ import { useRoute } from 'vue-router'
 import VVTBreadCrumbs, { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
-import { GLOBAL_VARIABLE_NAME } from '@/setting/app'
+import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
 
 const mainStore = useMainStore()
 const route = useRoute()

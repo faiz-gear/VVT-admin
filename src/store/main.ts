@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 17:34:34
- * @LastEditTime : 2022-05-30 16:46:55
+ * @LastEditTime : 2022-06-11 10:56:05
  * @LastEditors  : 卢瑶
  * @Description  : 全局状态管理
  * @FilePath     : /vvt-admin/src/store/main.ts
@@ -11,7 +11,7 @@ import { defineStore } from 'pinia'
 import requireAllRoutes from '../router/require-routes'
 import type { IMainActions, IMainState, Theme } from './main-type'
 import router from '../router'
-import { GLOBAL_VARIABLE_NAME } from '../setting/app'
+import { GLOBAL_VARIABLE_NAME } from '../setting/variable-setting'
 
 const useMainStore = defineStore<string, IMainState, {}, IMainActions>('main', {
   state: () => ({

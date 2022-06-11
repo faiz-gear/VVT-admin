@@ -1,5 +1,4 @@
-import { Rule } from 'async-validator'
-import type { FormItemRule, FormRules } from 'element-plus'
+import type { FormItemRule } from 'element-plus'
 
 type FormItemType = 'input' | 'password' | 'select' | 'datepicker'
 
