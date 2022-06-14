@@ -4,6 +4,7 @@ const BasicTable = () => import('@/views/main/components-demo/table/basic/BasicT
 const Form = () => import('@/views/main/components-demo/form/Form.vue')
 const BasicForm = () => import('@/views/main/components-demo/form/basic/BasicForm.vue')
 const Transition = () => import('@/views/main/components-demo/transition/Transition.vue')
+const SvgIcon = () => import('@/views/main/components-demo/svg-icon/SvgIcon.vue')
 
 export default {
   path: 'components-demo',
@@ -65,6 +66,15 @@ export default {
       meta: {
         title: '过渡组件',
         fullPath: '/main/components-demo/transition'
+      }
+    },
+    {
+      path: 'svg-icon',
+      name: 'svg-icon',
+      component: SvgIcon,
+      meta: {
+        title: 'Svg雪碧图',
+        fullPath: '/main/components-demo/svg-icon'
       }
     }
   ]

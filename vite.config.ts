@@ -9,6 +9,7 @@ import viteCompression from 'vite-plugin-compression'
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 import { GLOB_CONFIG_FILE_NAME } from './script/constant'
 import { transformEnvType } from './script/utils'
@@ -46,7 +47,6 @@ export default defineConfig(({ command, mode }) => {
       OptimizationPersist(),
       createHtmlPlugin({
         minify: isBuild,
-
         inject: {
           data: {
             title: VITE_GLOB_APP_NAME
@@ -63,6 +63,10 @@ export default defineConfig(({ command, mode }) => {
               ]
             : []
         }
+      }),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(__dirname, 'src/assets/icons')],
+        symbolId: 'icon-[dir]-[name]'
       })
     ],
     resolve: {

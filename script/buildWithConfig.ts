@@ -17,7 +17,3 @@ const buildWithConfig = async () => {
   }
 }
 buildWithConfig()
-
-/**
- * TODO 配置htmlPlugin,动态生成网站标题,动态引入生成的_app.config.js
- */
