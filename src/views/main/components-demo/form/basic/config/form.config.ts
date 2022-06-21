@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-26 18:59:23
- * @LastEditTime : 2022-05-30 10:05:43
+ * @LastEditTime : 2022-06-16 18:27:22
  * @LastEditors  : 卢瑶
  * @Description  :
  * @FilePath     : /vvt-admin/src/views/main/components-demo/form/basic/config/form.config.ts
@@ -98,6 +98,19 @@ const formConfig = reactive<IForm>({
         lg: 6,
         xl: 9
       }
+    },
+    {
+      field: 'text',
+      type: 'textarea',
+      label: '请输入内容',
+      otherOptions: {
+        autosize: { minRows: 2, maxRows: 6 }
+      }
+    },
+    {
+      field: 'slot',
+      type: 'slot',
+      slotName: 'slot'
     }
   ],
   formProp: {

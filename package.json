@@ -21,8 +21,10 @@
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
+    "vite-plugin-windicss": "^1.8.4",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "windicss": "^3.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",

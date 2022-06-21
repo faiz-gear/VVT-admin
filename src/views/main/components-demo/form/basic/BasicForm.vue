@@ -1,6 +1,9 @@
 <template>
   <div class="form">
     <VVTForm ref="vvtFormRef" v-bind="formConfig" v-model="formData">
+      <template #slot>
+        <el-button>插槽</el-button>
+      </template>
       <template #footer>
         <el-row justify="end">
           <el-button type="primary" @click="handleQueryClick">查询</el-button>

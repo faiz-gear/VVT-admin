@@ -1,6 +1,6 @@
 import type { FormItemRule } from 'element-plus'
 
-type FormItemType = 'input' | 'password' | 'select' | 'datepicker'
+type FormItemType = 'input' | 'password' | 'select' | 'datepicker' | 'textarea' | 'slot'
 
 // 下拉框选项的类型
 export interface ISelectOption {
@@ -23,7 +23,7 @@ export interface IColLayout {
 export interface IFormItem {
   field: string
   type: FormItemType
-  label: string
+  label?: string
   rules?: FormItemRule[]
   placeholder?: any
   // 针对select
@@ -34,6 +34,8 @@ export interface IFormItem {
   isHidden?: boolean
   // 单个表单元素的栅格布局配置
   colLayout?: IColLayout
+  // 插槽
+  slotName?: string
 }
 
 // form 属性

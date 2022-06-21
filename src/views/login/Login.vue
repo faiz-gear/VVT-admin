@@ -1,8 +1,12 @@
 <template>
-  <div class="login">
-    <h1 class="project-name">{{ VITE_GLOB_APP_NAME }}</h1>
-    <h2 class="bounce-in-top">登录</h2>
-    <el-card shadow="always" class="login-card slide-in-left">
+  <div class="login pt-[280px] pl-[30%] h-[100vh] text-center box-border bg-center bg-no-repeat bg-cover">
+    <h1
+      class="text-[36px] font-medium absolute left-[17%] top-[40%] bg-gradient-to-r from-[#ecf0f1] to-[#bdc3c7] bg-clip-text text-transparent"
+    >
+      {{ VITE_GLOB_APP_NAME }}
+    </h1>
+    <h2 class="bounce-in-top *font-xl mb-[20px] font-medium">登录</h2>
+    <el-card shadow="always" class="w-[400px] my-[0] mx-[auto] p-[20px] slide-in-left">
       <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="80px" size="large">
         <el-form-item label="用户名" prop="username">
           <el-input v-model="loginInfo.username" />
@@ -11,7 +15,7 @@
           <el-input v-model="loginInfo.password" type="password" show-password @keyup.enter="handleLoginClick" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width: 100%; margin-top: 10px" @click="handleLoginClick">登录</el-button>
+          <el-button type="primary" class="w-[100%] mt-[18px]" @click="handleLoginClick">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -85,24 +89,7 @@ const handleLoginClick = () => {
 
 <style scoped lang="scss">
 .login {
-  padding-top: 280px;
-  padding-left: 30%;
-  text-align: center;
-  height: 100vh;
-  box-sizing: border-box;
-  background: url('@/assets/login-bg.jpg') center no-repeat;
-  background-size: cover;
-  .project-name {
-    position: absolute;
-    left: 17%;
-    top: 30%;
-    color: #fff;
-  }
-  .login-card {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  background-image: url('@/assets/login-bg.jpg');
 }
 .slide-in-left {
   -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;

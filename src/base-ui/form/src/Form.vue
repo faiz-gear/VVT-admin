@@ -38,6 +38,18 @@
                 <el-date-picker v-bind="item.otherOptions" v-model="formData[`${item.field}`]" style="width: 100%">
                 </el-date-picker>
               </template>
+              <template v-else-if="item.type === 'textarea'">
+                <el-input
+                  v-bind="item.otherOptions"
+                  v-model="formData[`${item.field}`]"
+                  type="textarea"
+                  style="width: 100%"
+                >
+                </el-input>
+              </template>
+              <template v-else-if="item.type === 'slot'">
+                <slot :name="item.slotName" :row="formData[item.field]"></slot>
+              </template>
             </el-form-item>
           </el-col>
         </template>

@@ -10,6 +10,7 @@ import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import WindiCSS from 'vite-plugin-windicss'
 
 import { GLOB_CONFIG_FILE_NAME } from './script/constant'
 import { transformEnvType } from './script/utils'
@@ -67,7 +68,8 @@ export default defineConfig(({ command, mode }) => {
       createSvgIconsPlugin({
         iconDirs: [path.resolve(__dirname, 'src/assets/icons')],
         symbolId: 'icon-[dir]-[name]'
-      })
+      }),
+      WindiCSS()
     ],
     resolve: {
       alias: {

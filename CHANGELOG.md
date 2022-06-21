@@ -1,4 +1,7 @@
-## 1.0.0-beta.3(2022-06-15)
+## 1.0.0-beta.3(2022-06-15 ~ 2022-06-16)
+### ✨ Features
+- 引入windicss, Login页面样式使用windicss样式重构
+- Form组件增加slot和textarea类型
 ### 🎫 chore
 - 移除node-sass依赖
 
