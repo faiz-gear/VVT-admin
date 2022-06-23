@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 17:34:34
- * @LastEditTime : 2022-06-11 10:56:05
+ * @LastEditTime : 2022-06-23 14:18:59
  * @LastEditors  : 卢瑶
  * @Description  : 全局状态管理
  * @FilePath     : /vvt-admin/src/store/main.ts
@@ -12,13 +12,15 @@ import requireAllRoutes from '../router/require-routes'
 import type { IMainActions, IMainState, Theme } from './main-type'
 import router from '../router'
 import { GLOBAL_VARIABLE_NAME } from '../setting/variable-setting'
+import useStorage from '@/hooks/storage'
+const storage = useStorage()
 
 const useMainStore = defineStore<string, IMainState, {}, IMainActions>('main', {
   state: () => ({
-    username: localStorage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)! || '',
+    username: storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)! || '',
     routes: [],
-    token: localStorage.getItem(GLOBAL_VARIABLE_NAME.TOKEN)! || '',
-    theme: (localStorage.getItem(GLOBAL_VARIABLE_NAME.THEME) as Theme) || 'light'
+    token: storage.getItem(GLOBAL_VARIABLE_NAME.TOKEN)! || '',
+    theme: (storage.getItem(GLOBAL_VARIABLE_NAME.THEME) as Theme) || 'light'
   }),
   actions: {
     registerAsyncRoutes() {

@@ -29,9 +29,11 @@ import { useRouter } from 'vue-router'
 import useMainStore from '../../store/main'
 import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
 import { useGlobSetting } from '@/hooks/setting'
+import useStorage from '@/hooks/storage'
 
 const router = useRouter()
 const mainStore = useMainStore()
+const storage = useStorage()
 
 const { VITE_GLOB_APP_NAME } = useGlobSetting()
 
@@ -78,8 +80,8 @@ const handleLoginClick = () => {
     if (valid) {
       if (loginInfo.value.username === mockUserName && loginInfo.value.password === mockPassword) {
         mainStore.setName(loginInfo.value.username)
-        localStorage.setItem(GLOBAL_VARIABLE_NAME.USERNAME, loginInfo.value.username)
-        localStorage.setItem(GLOBAL_VARIABLE_NAME.TOKEN, mockAccessToken)
+        storage.setItem(GLOBAL_VARIABLE_NAME.USERNAME, loginInfo.value.username)
+        storage.setItem(GLOBAL_VARIABLE_NAME.TOKEN, mockAccessToken)
         router.push('/main')
       }
     }

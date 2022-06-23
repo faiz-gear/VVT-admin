@@ -1,7 +1,7 @@
 {
   "name": "vvt-admin",
   "private": true,
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "scripts": {
     "dev": "vite",
     "build": "vite build && esno ./script/buildWithConfig.ts",
@@ -17,6 +17,7 @@
     "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/core": "^8.5.0",
     "axios": "^0.26.1",
+    "crypto-js": "^4.1.1",
     "element-plus": "^2.2.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/crypto-js": "^4.1.1",
     "@types/fs-extra": "^9.0.13",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.15.0",

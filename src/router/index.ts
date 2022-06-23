@@ -1,14 +1,17 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 16:52:34
- * @LastEditTime : 2022-06-11 10:56:09
+ * @LastEditTime : 2022-06-23 14:29:11
  * @LastEditors  : 卢瑶
  * @Description  : 路由出口文件
  * @FilePath     : /vvt-admin/src/router/index.ts
  */
 
+import useStorage from '@/hooks/storage'
 import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+
+const storage = useStorage()
 
 const routes: RouteRecordRaw[] = [
   {
@@ -40,7 +43,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  if (!localStorage.getItem(GLOBAL_VARIABLE_NAME.TOKEN) && to.name !== 'login') {
+  if (!storage.getItem(GLOBAL_VARIABLE_NAME.TOKEN) && to.name !== 'login') {
     return '/login'
   }
 })

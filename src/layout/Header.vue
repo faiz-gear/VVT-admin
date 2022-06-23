@@ -30,9 +30,11 @@ import VVTBreadCrumbs, { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
 import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
+import useStorage from '@/hooks/storage'
 
 const mainStore = useMainStore()
 const route = useRoute()
+const storage = useStorage()
 
 const props = defineProps<{
   isCollapse: boolean
@@ -42,7 +44,7 @@ const emits = defineEmits<{
   (e: 'update:is-collapse', isCollapse: boolean): void
 }>()
 
-const userName = mainStore.username || localStorage.getItem('vvt-username')
+const userName = mainStore.username || storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)
 
 const breadcrumbs = ref<IBreadcrumb[]>([])
 watchEffect(() => {
