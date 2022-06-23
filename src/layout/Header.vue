@@ -60,7 +60,7 @@ const isDark = computed<boolean>({
     const theme = newValue ? 'dark' : 'light'
     document.documentElement.setAttribute('class', theme)
     mainStore.setTheme(theme)
-    localStorage.setItem(GLOBAL_VARIABLE_NAME.THEME, theme)
+    storage.setItem(GLOBAL_VARIABLE_NAME.THEME, theme)
   }
 })
 </script>

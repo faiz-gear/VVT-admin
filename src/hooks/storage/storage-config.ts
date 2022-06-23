@@ -1,3 +1,5 @@
+import pkg from '../../../package.json'
+
 export interface StorageConfig {
   type: 'localStorage' | 'sessionStorage' // 存储类型
   prefix: string // 存储名称前缀
@@ -7,7 +9,7 @@ export interface StorageConfig {
 
 export const storageConfig: StorageConfig = {
   type: 'localStorage',
-  prefix: 'vvt-',
+  prefix: pkg.name + '-' + pkg.version + '-',
   storageExpire: 0,
   isEncrypt: import.meta.env.PROD
 }
