@@ -1,24 +1,35 @@
 <template>
-  <div class="login pt-[280px] pl-[30%] h-[100vh] text-center box-border bg-center bg-no-repeat bg-cover">
+  <div
+    class="login relative h-[100vh] text-center box-border bg-left bg-no-repeat bg-contain bg-center"
+    vvt:xs="bg-bottom"
+  >
+    <!-- 基于可变修饰分组编程范式, 结合属性化模式 -->
     <h1
-      class="text-[36px] font-medium absolute left-[17%] top-[40%] bg-gradient-to-r from-[#ecf0f1] to-[#bdc3c7] bg-clip-text text-transparent"
+      class="rotate-90 absolute left-[5%] top-[5%] bg-gradient-to-r from-[#74b9ff] to-[#55efc4] bg-clip-text text-transparent text-[24px] font-medium font-mono"
     >
       {{ VITE_GLOB_APP_NAME }}
     </h1>
-    <h2 class="bounce-in-top *font-xl mb-[20px] font-medium">登录</h2>
-    <el-card shadow="always" class="w-[400px] my-[0] mx-[auto] p-[20px] slide-in-left">
-      <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="80px" size="large">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="loginInfo.username" />
-        </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input v-model="loginInfo.password" type="password" show-password @keyup.enter="handleLoginClick" />
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" class="w-[100%] mt-[18px]" @click="handleLoginClick">登录</el-button>
-        </el-form-item>
-      </el-form>
-    </el-card>
+    <div
+      class="pt-[280px]"
+      vvt:lg="pl-[600px]"
+      vvt:md="pl-[300px]"
+      vvt:xs="absolute left-1/2 transform -translate-x-1/2"
+    >
+      <h2 class="bounce-in-top *font-xl mb-[20px] font-medium">登录</h2>
+      <el-card shadow="always" class="w-[400px] my-[0] mx-[auto] p-[20px] slide-in-left" vvt:xs="w-[350px]">
+        <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="auto" size="large">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="loginInfo.username" />
+          </el-form-item>
+          <el-form-item label="密码" prop="password">
+            <el-input v-model="loginInfo.password" type="password" show-password @keyup.enter="handleLoginClick" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" class="w-[100%] mt-[18px]" @click="handleLoginClick">登录</el-button>
+          </el-form-item>
+        </el-form>
+      </el-card>
+    </div>
   </div>
 </template>
 
@@ -91,7 +102,7 @@ const handleLoginClick = () => {
 
 <style scoped lang="scss">
 .login {
-  background-image: url('@/assets/login-bg.jpg');
+  background-image: url('@/assets/project.png');
 }
 .slide-in-left {
   -webkit-animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
