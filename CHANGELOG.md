@@ -3,6 +3,7 @@
 ### ✨ Features
 
 - 修改登录背景图片;windicss 样式基于可变修饰分组编程范式, 结合属性化模式
+- 增加 404 页面;引入 windicss/plugin-animations 动画插件
 
 ## 1.0.0-beta.4(2022-06-23)
 

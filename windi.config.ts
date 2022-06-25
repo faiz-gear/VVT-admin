@@ -27,5 +27,17 @@ export default defineConfig({
       lg: { min: '1200px', max: '1920px' },
       xl: { min: '1920px' }
     }
-  }
+  },
+  plugins: [
+    require('@windicss/plugin-animations')({
+      settings: {
+        animatedSpeed: 1000,
+        heartBeatSpeed: 1000,
+        hingeSpeed: 2000,
+        bounceInSpeed: 750,
+        bounceOutSpeed: 750,
+        animationDelaySpeed: 1000
+      }
+    })
+  ]
 })
