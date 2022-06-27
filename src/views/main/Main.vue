@@ -26,15 +26,19 @@ import Menu from '@/layout/aside/Menu.vue'
 import Header from '@/layout/Header.vue'
 import { ref } from 'vue'
 import useMainStore from '@/store/main'
+import { storeToRefs } from 'pinia'
 
 const mainStore = useMainStore()
+const { asyncRoutes } = storeToRefs(mainStore)
 
 const isCollapse = ref(false)
 
-const routes = ref(mainStore.routes)
+const routes = ref(asyncRoutes.value)
 const dashboardRouteIndex = routes.value.findIndex((route) => route.name === 'dashboard')
 const dashboardRoute = routes.value.splice(dashboardRouteIndex, 1)
 routes.value.unshift(dashboardRoute[0])
+
+// TODO 更换整体样式风格 https://dribbble.com/shots/17161141-Dashboard-User-Interface-UI/attachments/12260379?mode=media
 </script>
 
 <style scoped lang="scss">

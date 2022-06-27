@@ -31,8 +31,11 @@ import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
 import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
 import useStorage from '@/hooks/storage'
+import { storeToRefs } from 'pinia'
 
 const mainStore = useMainStore()
+const { username, asyncRoutes, theme } = storeToRefs(mainStore)
+const { setTheme } = mainStore
 const route = useRoute()
 const storage = useStorage()
 
@@ -44,22 +47,22 @@ const emits = defineEmits<{
   (e: 'update:is-collapse', isCollapse: boolean): void
 }>()
 
-const userName = mainStore.username || storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)
+const userName = username || storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)
 
 const breadcrumbs = ref<IBreadcrumb[]>([])
 watchEffect(() => {
-  breadcrumbs.value = mapRouteToBreadcrumbs(route, mainStore.routes)
+  breadcrumbs.value = mapRouteToBreadcrumbs(route, asyncRoutes.value)
 })
 
 const isDark = computed<boolean>({
   get() {
-    document.documentElement.setAttribute('class', mainStore.theme)
-    return mainStore.theme === 'dark'
+    document.documentElement.setAttribute('class', theme.value)
+    return theme.value === 'dark'
   },
   set(newValue) {
     const theme = newValue ? 'dark' : 'light'
     document.documentElement.setAttribute('class', theme)
-    mainStore.setTheme(theme)
+    setTheme(theme)
     storage.setItem(GLOBAL_VARIABLE_NAME.THEME, theme)
   }
 })

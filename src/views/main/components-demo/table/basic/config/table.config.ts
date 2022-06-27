@@ -1,13 +1,13 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-25 16:32:13
- * @LastEditTime : 2022-05-28 17:10:35
+ * @LastEditTime : 2022-06-25 15:25:07
  * @LastEditors  : 卢瑶
  * @Description  :
  * @FilePath     : /vvt-admin/src/views/main/components-demo/table/basic/config/table.config.ts
  */
 import { ref } from 'vue'
-import type { ISpanMethodProps, ITable } from '../../../../../../base-ui/table/src/table-type'
+import type { ITable } from '@/base-ui/table/src/table-type'
 
 interface ITableData {
   id: string

@@ -48,6 +48,7 @@ import useStorage from '@/hooks/storage'
 
 const router = useRouter()
 const mainStore = useMainStore()
+const { setName, setToken } = mainStore
 const storage = useStorage()
 
 const { VITE_GLOB_APP_NAME } = useGlobSetting()
@@ -94,7 +95,8 @@ const handleLoginClick = () => {
   formRef.value?.validate((valid) => {
     if (valid) {
       if (loginInfo.value.username === mockUserName && loginInfo.value.password === mockPassword) {
-        mainStore.setName(loginInfo.value.username)
+        setName(loginInfo.value.username)
+        setToken(mockAccessToken)
         storage.setItem(GLOBAL_VARIABLE_NAME.USERNAME, loginInfo.value.username)
         storage.setItem(GLOBAL_VARIABLE_NAME.TOKEN, mockAccessToken)
         router.push('/main')

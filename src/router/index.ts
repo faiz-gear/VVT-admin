@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 16:52:34
- * @LastEditTime : 2022-06-23 14:29:11
+ * @LastEditTime : 2022-06-27 16:32:12
  * @LastEditors  : 卢瑶
  * @Description  : 路由出口文件
  * @FilePath     : /vvt-admin/src/router/index.ts
@@ -47,5 +47,11 @@ router.beforeEach((to) => {
     return '/login'
   }
 })
+
+export function resetRouter(asyncRoutes: RouteRecordRaw[]) {
+  asyncRoutes.forEach((route) => {
+    router.removeRoute(route.name!)
+  })
+}
 
 export default router

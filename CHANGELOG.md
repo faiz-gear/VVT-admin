@@ -1,3 +1,10 @@
+## 1.0.0-beta.6(2022-06-27)
+
+### ✨ Features
+
+- pinia 定义使用 Vue setup 模式定义
+- router 增加 resetRouter 方法
+
 ## 1.0.0-beta.5(2022-06-25)
 
 ### ✨ Features
