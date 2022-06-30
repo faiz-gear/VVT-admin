@@ -24,4 +24,4 @@ const props = defineProps<{
 const router = useRouter()
 </script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

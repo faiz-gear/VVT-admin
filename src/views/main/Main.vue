@@ -1,21 +1,30 @@
 <template>
-  <div class="main">
-    <el-container class="main-container">
-      <el-container>
-        <el-header class="main-header"><Header v-model:isCollapse="isCollapse"></Header></el-header>
-        <el-container>
-          <el-aside :width="isCollapse ? '64px' : '200px'" class="main-aside"
-            ><Menu :is-collapse="isCollapse" :routes="routes"></Menu
-          ></el-aside>
-          <el-main class="main-content"
-            ><RouterView v-slot="{ Component }">
-              <template v-if="Component">
-                <Transition mode="out-in" name="slide-right" appear>
-                  <component :is="Component"></component>
-                </Transition>
-              </template> </RouterView
-          ></el-main>
-        </el-container>
+  <div
+    class="main px-[2rem] py-[2rem] box-border h-full bg-gradient-to-r from-slate-200 to-slate-300"
+    vvt:dark="from-dark-200 to-dark-600"
+  >
+    <el-container class="pr-[48px] h-full rounded-3xl bg-white overflow-hidden" vvt:dark="bg-black">
+      <el-aside v-if="lg" :width="isCollapse && lg ? '64px' : '260px'" class="main-aside py-[36px]">
+        <Menu :is-collapse="isCollapse" :routes="routes"></Menu>
+      </el-aside>
+      <el-drawer
+        v-else
+        :model-value="!isCollapse"
+        direction="ltr"
+        :size="lg ? '30%' : '40%'"
+        @update:model-value="isCollapse = !$event"
+        ><Menu :is-collapse="false" :routes="routes"></Menu
+      ></el-drawer>
+      <el-container class="py-[2.5rem]">
+        <el-header class="bg-white" vvt:dark="bg-black"><Header v-model:isCollapse="isCollapse"></Header></el-header>
+        <el-main class="main-content"
+          ><RouterView v-slot="{ Component }">
+            <template v-if="Component">
+              <Transition mode="out-in" name="slide-right" appear>
+                <component :is="Component"></component>
+              </Transition>
+            </template> </RouterView
+        ></el-main>
       </el-container>
     </el-container>
   </div>
@@ -27,6 +36,7 @@ import Header from '@/layout/Header.vue'
 import { ref } from 'vue'
 import useMainStore from '@/store/main'
 import { storeToRefs } from 'pinia'
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const mainStore = useMainStore()
 const { asyncRoutes } = storeToRefs(mainStore)
@@ -38,27 +48,17 @@ const dashboardRouteIndex = routes.value.findIndex((route) => route.name === 'da
 const dashboardRoute = routes.value.splice(dashboardRouteIndex, 1)
 routes.value.unshift(dashboardRoute[0])
 
-// TODO 更换整体样式风格 https://dribbble.com/shots/17161141-Dashboard-User-Interface-UI/attachments/12260379?mode=media
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const lg = breakpoints.greater('lg')
 </script>
 
 <style scoped lang="scss">
 .main {
-  padding: 10px 15px;
-  box-sizing: border-box;
-  height: 100%;
-  background-color: var(--el-main-bg-color);
-  &-container {
-    height: 100%;
-  }
-  &-header {
-    border-radius: 5px 5px 0 0;
-    background: var(--el-header-dark-bg);
-  }
   &-aside {
     transition: 0.5s all cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   &-content {
-    // background-color: #f0f2f5;
+    overflow-x: hidden;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 17:34:34
- * @LastEditTime : 2022-06-27 16:42:32
+ * @LastEditTime : 2022-06-28 21:44:29
  * @LastEditors  : 卢瑶
  * @Description  : 全局状态管理
  * @FilePath     : /vvt-admin/src/store/main.ts
@@ -20,6 +20,7 @@ const storage = useStorage()
 const useMainStore = defineStore('main', () => {
   // state
   const username = ref<string>(storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)! || '')
+  const avatar = ref<string>('')
   const asyncRoutes = ref<RouteRecordRaw[]>([])
   const token = ref<string>(storage.getItem(GLOBAL_VARIABLE_NAME.TOKEN)! || '')
   const theme = ref<Theme>((storage.getItem(GLOBAL_VARIABLE_NAME.THEME) as Theme) || 'light')
@@ -40,6 +41,7 @@ const useMainStore = defineStore('main', () => {
 
   return {
     username,
+    avatar,
     asyncRoutes,
     token,
     theme,

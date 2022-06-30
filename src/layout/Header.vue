@@ -1,13 +1,18 @@
 <template>
-  <div class="header">
-    <div class="header-left">
-      <el-icon :size="20" class="icon" @click="emits('update:is-collapse', !isCollapse)">
+  <div class="flex justify-between h-full text-black">
+    <div class="header-left flex items-center">
+      <el-icon
+        :size="20"
+        class="mr-[20px] cursor-pointer"
+        :color="themeColor"
+        @click="emits('update:is-collapse', !isCollapse)"
+      >
         <component :is="isCollapse ? 'expand' : 'fold'"></component>
       </el-icon>
       <VVTBreadCrumbs :breadcrumbs="breadcrumbs" separator="/"></VVTBreadCrumbs>
     </div>
-    <div class="header-action">
-      <div class="header-action-item">
+    <div class="flex items-center">
+      <div class="py-[8px]">
         <el-switch
           v-model="isDark"
           style="margin-left: 24px"
@@ -16,9 +21,9 @@
           :inactive-icon="'Moon'"
         />
       </div>
-      <div class="header-action-item">
-        <div class="greeting">欢迎您, {{ userName }}</div>
-      </div>
+      <!-- <div>
+        <div class="font-bold">欢迎您, {{ userName }}</div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -32,12 +37,14 @@ import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
 import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
 import useStorage from '@/hooks/storage'
 import { storeToRefs } from 'pinia'
+import { useThemeColor } from '@/hooks/setting/theme'
 
 const mainStore = useMainStore()
 const { username, asyncRoutes, theme } = storeToRefs(mainStore)
 const { setTheme } = mainStore
 const route = useRoute()
 const storage = useStorage()
+const themeColor = useThemeColor()
 
 const props = defineProps<{
   isCollapse: boolean
@@ -68,26 +75,4 @@ const isDark = computed<boolean>({
 })
 </script>
 
-<style scoped lang="scss">
-.header {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
-  color: var(--el-text-color-regular);
-  .icon {
-    margin-right: 20px;
-    cursor: pointer;
-  }
-  &-left {
-    display: flex;
-    align-items: center;
-  }
-  &-action {
-    display: flex;
-    align-items: center;
-    &-item {
-      padding: 0 8px;
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

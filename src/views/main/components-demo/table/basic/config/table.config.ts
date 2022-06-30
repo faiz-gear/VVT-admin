@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-04-25 16:32:13
- * @LastEditTime : 2022-06-25 15:25:07
+ * @LastEditTime : 2022-06-28 23:39:59
  * @LastEditors  : 卢瑶
  * @Description  :
  * @FilePath     : /vvt-admin/src/views/main/components-demo/table/basic/config/table.config.ts
@@ -25,7 +25,7 @@ const tableConfig = ref<ITable<ITableData>>({
     {
       prop: 'id',
       label: 'id',
-      width: 400,
+      minWidth: 200,
       slotName: 'id',
       sortable: true,
       fixed: 'left'
@@ -33,29 +33,29 @@ const tableConfig = ref<ITable<ITableData>>({
     {
       prop: 'name',
       label: 'name',
-      width: 400
+      minWidth: 200
     },
     {
       prop: 'amount1',
       label: 'amount1',
-      width: 400,
+      minWidth: 200,
       showOverflowTooltip: true
     },
     {
       prop: 'amount2',
       label: 'amount2',
-      width: 400
+      minWidth: 200
     },
     {
       prop: 'amount3',
       label: 'amount3',
-      width: 400
+      minWidth: 200
     },
     {
       prop: 'handler',
       label: '操作',
       slotName: 'handler',
-      width: 200
+      minWidth: 160
     }
   ],
   tableProp: {

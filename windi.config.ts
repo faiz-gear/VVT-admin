@@ -19,15 +19,6 @@ export default defineConfig({
     'font-lg': 'text-[18px]',
     'font-xl': 'text-[20px]'
   },
-  theme: {
-    screens: {
-      xs: { max: '768px' },
-      sm: { min: '768px', max: '992px' },
-      md: { min: '992px', max: '1200px' },
-      lg: { min: '1200px', max: '1920px' },
-      xl: { min: '1920px' }
-    }
-  },
   plugins: [
     require('@windicss/plugin-animations')({
       settings: {

@@ -1,7 +1,7 @@
 <template>
   <div
     class="login relative h-[100vh] text-center box-border bg-left bg-no-repeat bg-contain bg-center"
-    vvt:xs="bg-bottom"
+    vvt:sm="bg-bottom"
   >
     <!-- 基于可变修饰分组编程范式, 结合属性化模式 -->
     <h1
@@ -11,15 +11,15 @@
     </h1>
     <div
       class="pt-[280px]"
-      vvt:lg="pl-[600px]"
-      vvt:md="pl-[300px]"
-      vvt:xs="absolute left-1/2 transform -translate-x-1/2"
+      vvt:2xl="pl-[600px]"
+      vvt:lg="pl-[300px]"
+      vvt:sm="absolute left-1/2 transform -translate-x-1/2"
     >
       <h2 class="animate-animated animate-slideInDown *font-xl mb-[20px] font-medium">登录</h2>
       <el-card
         shadow="always"
         class="w-[400px] my-[0] mx-[auto] p-[20px] animate-animated animate-slideInLeft"
-        vvt:xs="w-[350px]"
+        vvt:sm="w-[350px]"
       >
         <el-form ref="formRef" :rules="rules" :model="loginInfo" label-width="auto" size="large">
           <el-form-item label="用户名" prop="username">

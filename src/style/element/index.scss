@@ -1,31 +1,16 @@
-
-
 @import 'element-plus/theme-chalk/src/loading.scss'; // 修复service方式调用el-loading没有样式问题
 
 html {
-  --el-main-bg-color: #f0f2f5;
-  --el-header-dark-bg: #606266;
-  .el-header {
-    --el-text-color-regular: #fff;
+  .el-menu-item.is-active {
+    background: #000;
+    color: #f1f1f1;
   }
-}
-.el-menu-item.is-active {
-  background: linear-gradient(135deg, var(--el-text-color-primary) 0%, var(--el-text-color-regular) 100%);
-  color: #f1f1f1;
 }
 
 // 暗黑模式
 html.dark {
-  --el-main-bg-color: #141414;
-  --el-header-dark-bg: #0c0c0c;
-  .el-aside {
-    --el-menu-bg-color: #1e1e1e;
-  }
   .el-menu-item.is-active {
-    background: linear-gradient(135deg, #3d3f51 0%, #232227 100%);
-    color: #f1f1f1;
+    background: #fff;
+    color: #000;
   }
-  
 }
-
-
