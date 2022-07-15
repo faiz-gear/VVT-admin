@@ -5,7 +5,7 @@
   >
     <el-container class="pr-[48px] h-full rounded-3xl bg-white overflow-hidden" vvt:dark="bg-black">
       <el-aside v-if="lg" :width="isCollapse && lg ? '64px' : '260px'" class="main-aside py-[36px]">
-        <Menu :is-collapse="isCollapse" :routes="routes"></Menu>
+        <Menu :is-collapse="isCollapse" :routes="routes" @setting-icon-click="setting = true"></Menu>
       </el-aside>
       <el-drawer
         v-else
@@ -13,7 +13,7 @@
         direction="ltr"
         :size="lg ? '30%' : '40%'"
         @update:model-value="isCollapse = !$event"
-        ><Menu :is-collapse="false" :routes="routes"></Menu
+        ><Menu :is-collapse="false" :routes="routes" @setting-icon-click="setting = true"></Menu
       ></el-drawer>
       <el-container class="py-[2.5rem]">
         <el-header class="bg-white" vvt:dark="bg-black"><Header v-model:isCollapse="isCollapse"></Header></el-header>
@@ -27,13 +27,17 @@
         ></el-main>
       </el-container>
     </el-container>
+    <Setting v-model:setting="setting"></Setting>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import Menu from '@/layout/aside/Menu.vue'
 import Header from '@/layout/Header.vue'
-import { ref } from 'vue'
+import Setting from '@/layout/setting/Setting.vue'
+
 import useMainStore from '@/store/main'
 import { storeToRefs } from 'pinia'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -48,8 +52,12 @@ const dashboardRouteIndex = routes.value.findIndex((route) => route.name === 'da
 const dashboardRoute = routes.value.splice(dashboardRouteIndex, 1)
 routes.value.unshift(dashboardRoute[0])
 
+// 左侧菜单栏响应式
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const lg = breakpoints.greater('lg')
+
+// 系统设置
+const setting = ref(false)
 </script>
 
 <style scoped lang="scss">

@@ -12,38 +12,34 @@
       <VVTBreadCrumbs :breadcrumbs="breadcrumbs" separator="/"></VVTBreadCrumbs>
     </div>
     <div class="flex items-center">
-      <div class="py-[8px]">
-        <el-switch
-          v-model="isDark"
-          style="margin-left: 24px"
-          inline-prompt
-          :active-icon="'Sunny'"
-          :inactive-icon="'Moon'"
-        />
+      <div
+        class="p-[10px] border border-[#e3e4e3] text-[20px] cursor-pointer m-[4px] rounded-lg"
+        vvt:hover="bg-gray-100"
+        vvt:dark="hover:bg-[#333]"
+        @click="toggle"
+      >
+        <SvgIcon :name="isFullscreen ? 'minimize' : 'screenfull'" size="16px" :color="themeColor"></SvgIcon>
       </div>
-      <!-- <div>
-        <div class="font-bold">欢迎您, {{ userName }}</div>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import VVTBreadCrumbs, { IBreadcrumb } from '@/base-ui/breadcrumbs'
 import useMainStore from '@/store/main'
 import { mapRouteToBreadcrumbs } from '@/utils/routes-helper'
-import { GLOBAL_VARIABLE_NAME } from '@/setting/variable-setting'
-import useStorage from '@/hooks/storage'
 import { storeToRefs } from 'pinia'
 import { useThemeColor } from '@/hooks/setting/theme'
+import SvgIcon from '@/base-ui/svg-icon'
+import { useFullscreen } from '@vueuse/core'
+
+const { isFullscreen, toggle } = useFullscreen()
 
 const mainStore = useMainStore()
-const { username, asyncRoutes, theme } = storeToRefs(mainStore)
-const { setTheme } = mainStore
+const { asyncRoutes } = storeToRefs(mainStore)
 const route = useRoute()
-const storage = useStorage()
 const themeColor = useThemeColor()
 
 const props = defineProps<{
@@ -54,24 +50,9 @@ const emits = defineEmits<{
   (e: 'update:is-collapse', isCollapse: boolean): void
 }>()
 
-const userName = username || storage.getItem(GLOBAL_VARIABLE_NAME.USERNAME)
-
 const breadcrumbs = ref<IBreadcrumb[]>([])
 watchEffect(() => {
   breadcrumbs.value = mapRouteToBreadcrumbs(route, asyncRoutes.value)
-})
-
-const isDark = computed<boolean>({
-  get() {
-    document.documentElement.setAttribute('class', theme.value)
-    return theme.value === 'dark'
-  },
-  set(newValue) {
-    const theme = newValue ? 'dark' : 'light'
-    document.documentElement.setAttribute('class', theme)
-    setTheme(theme)
-    storage.setItem(GLOBAL_VARIABLE_NAME.THEME, theme)
-  }
 })
 </script>
 

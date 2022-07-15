@@ -1,7 +1,7 @@
 /*
  * @Author       : 卢瑶
  * @Date         : 2022-03-17 17:34:34
- * @LastEditTime : 2022-06-28 21:44:29
+ * @LastEditTime : 2022-07-02 17:42:07
  * @LastEditors  : 卢瑶
  * @Description  : 全局状态管理
  * @FilePath     : /vvt-admin/src/store/main.ts
@@ -10,7 +10,6 @@
 import { ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 import requireAllRoutes from '../router/require-routes'
-import type { Theme } from './main-type'
 import router from '../router'
 import { GLOBAL_VARIABLE_NAME } from '../setting/variable-setting'
 import useStorage from '@/hooks/storage'
@@ -23,7 +22,6 @@ const useMainStore = defineStore('main', () => {
   const avatar = ref<string>('')
   const asyncRoutes = ref<RouteRecordRaw[]>([])
   const token = ref<string>(storage.getItem(GLOBAL_VARIABLE_NAME.TOKEN)! || '')
-  const theme = ref<Theme>((storage.getItem(GLOBAL_VARIABLE_NAME.THEME) as Theme) || 'light')
 
   // actions
   const setAsyncRoutes = (newAsyncRoutes: RouteRecordRaw[]) => {
@@ -35,21 +33,16 @@ const useMainStore = defineStore('main', () => {
   const setToken = (newToken: string) => {
     token.value = newToken
   }
-  const setTheme = (newTheme: Theme) => {
-    theme.value = newTheme
-  }
 
   return {
     username,
     avatar,
     asyncRoutes,
     token,
-    theme,
 
     setAsyncRoutes,
     setName,
-    setToken,
-    setTheme
+    setToken
   }
 })
 

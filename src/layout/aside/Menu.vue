@@ -40,11 +40,12 @@
         <div class="flex justify-center" :style="{ flexDirection: !isCollapse ? 'row' : 'column' }">
           <div
             ref="settingRef"
-            class="p-[10px] border border-gray-100 text-[20px] cursor-pointer m-[4px]"
+            class="p-[10px] border border-[#e3e4e3] text-[20px] cursor-pointer m-[4px] rounded-lg"
             vvt:hover="bg-gray-100"
             vvt:dark="hover:bg-[#333]"
             @mouseenter="handleIconMouseEvent('setting', 'enter')"
             @mouseleave="handleIconMouseEvent('setting', 'leave')"
+            @click="emits('setting-icon-click')"
           >
             <SvgIcon name="setting" size="16px" :color="themeColor"></SvgIcon>
           </div>
@@ -60,11 +61,12 @@
           <!-- TODO 退出登录 清除缓存数据 -->
           <div
             ref="exitRef"
-            class="p-[10px] border border-gray-100 text-[20px] cursor-pointer m-[4px]"
+            class="p-[10px] border border-[#e3e4e3] text-[20px] cursor-pointer m-[4px] rounded-lg"
             vvt:hover="bg-gray-100"
             vvt:dark="hover:bg-[#333]"
             @mouseenter="handleIconMouseEvent('exit', 'enter')"
             @mouseleave="handleIconMouseEvent('exit', 'leave')"
+            @click="logout"
           >
             <SvgIcon name="exit" size="16px" :color="themeColor"></SvgIcon>
           </div>
@@ -97,6 +99,10 @@ import { useThemeColor } from '@/hooks/setting/theme'
 const props = defineProps<{
   isCollapse?: boolean
   routes: RouteRecordRaw[]
+}>()
+
+const emits = defineEmits<{
+  (e: 'setting-icon-click'): void
 }>()
 
 const router = useRouter()
@@ -132,6 +138,10 @@ const handleIconMouseEvent = (iconName: 'setting' | 'exit', event: 'enter' | 'le
 const textAvatarBackgroundColor = ref(storage.getItem(GLOBAL_VARIABLE_NAME.TEXT_AVATAR_BACKGROUND_COLOR))
 !textAvatarBackgroundColor.value &&
   storage.setItem(GLOBAL_VARIABLE_NAME.TEXT_AVATAR_BACKGROUND_COLOR, (textAvatarBackgroundColor.value = getRandomHex()))
+
+const logout = () => {
+  router.push('/login')
+}
 </script>
 <style scoped lang="scss">
 :deep(.el-sub-menu),

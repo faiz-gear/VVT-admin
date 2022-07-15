@@ -53,6 +53,8 @@ const storage = useStorage()
 
 const { VITE_GLOB_APP_NAME } = useGlobSetting()
 
+// TODO https://dribbble.com/shots/16705889-Login-Sign-up-AW-Universal-Page/attachments/11747461?mode=media
+
 const formRef = ref<FormInstance>()
 const rules = reactive<FormRules>({
   username: [

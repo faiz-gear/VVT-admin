@@ -1,10 +1,10 @@
 import { computed } from 'vue'
-import useMainStore from '@/store/main'
 import { storeToRefs } from 'pinia'
+import useSettingStore from '@/store/setting'
 
 export function useThemeColor() {
-  const mainStore = useMainStore()
-  const { theme } = storeToRefs(mainStore)
+  const settingStore = useSettingStore()
+  const { theme } = storeToRefs(settingStore)
   const themeColor = computed(() => (theme.value === 'light' ? '#333' : '#fff'))
 
   return themeColor
