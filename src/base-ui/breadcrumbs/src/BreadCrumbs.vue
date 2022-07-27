@@ -2,11 +2,11 @@
   <div class="vvt-breadcrumbs">
     <el-breadcrumb :separator="separator">
       <template v-for="breadcrumb in breadcrumbs" :key="breadcrumb.name">
-        <el-breadcrumb-item
-          >{{ breadcrumb.name }}
+        <el-breadcrumb-item>
           <el-dropdown v-if="breadcrumb.children && breadcrumb.children.length > 0">
             <span class="el-dropdown-link">
-              <el-icon class="el-icon--right">
+              {{ breadcrumb.name }}
+              <el-icon v-if="arrowIcon" class="el-icon--right">
                 <arrow-down />
               </el-icon>
             </span>
@@ -21,6 +21,7 @@
               </el-dropdown-menu>
             </template>
           </el-dropdown>
+          <span v-else>{{ breadcrumb.name }}</span>
         </el-breadcrumb-item>
       </template>
     </el-breadcrumb>
@@ -34,9 +35,11 @@ const props = withDefaults(
   defineProps<{
     breadcrumbs: IBreadcrumb[]
     separator?: string
+    arrowIcon?: boolean
   }>(),
   {
-    separator: '/'
+    separator: '/',
+    arrowIcon: false
   }
 )
 

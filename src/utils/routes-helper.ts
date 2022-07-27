@@ -19,14 +19,14 @@ export function mapRouteToBreadcrumbs(
     }
   }
   // 当前路由 --> breadcrumbs
-  routesMap.forEach((route, key) => {
+  routesMap.forEach(({ meta, children, path }, key) => {
     if (currentRoute.fullPath.includes(key)) {
       breadcrumbs.push({
-        name: route.meta!.title as string,
-        path: route.meta!.fullPath as string,
-        children: route.children?.map((item: any) => ({
-          name: item.meta!.title as string,
-          path: item.meta!.fullPath as string
+        name: meta && meta.title,
+        path: path as string,
+        children: children?.map(({ meta: subMeta, path: subPath }: any) => ({
+          name: subMeta && subMeta.title,
+          path: subPath
         }))
       })
     }

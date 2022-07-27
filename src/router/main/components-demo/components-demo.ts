@@ -5,6 +5,7 @@ const Form = () => import('@/views/main/components-demo/form/Form.vue')
 const BasicForm = () => import('@/views/main/components-demo/form/basic/BasicForm.vue')
 const Transition = () => import('@/views/main/components-demo/transition/Transition.vue')
 const SvgIcon = () => import('@/views/main/components-demo/svg-icon/SvgIcon.vue')
+const Charts = () => import('@/views/main/components-demo/charts/Charts.vue')
 
 export default {
   path: 'components-demo',
@@ -75,6 +76,15 @@ export default {
       meta: {
         title: 'Svg雪碧图',
         fullPath: '/main/components-demo/svg-icon'
+      }
+    },
+    {
+      path: 'charts',
+      name: 'charts',
+      component: Charts,
+      meta: {
+        title: '图表',
+        fullPath: '/main/components-demo/charts'
       }
     }
   ]
