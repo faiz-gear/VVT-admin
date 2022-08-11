@@ -6,6 +6,7 @@ const BasicForm = () => import('@/views/main/components-demo/form/basic/BasicFor
 const Transition = () => import('@/views/main/components-demo/transition/Transition.vue')
 const SvgIcon = () => import('@/views/main/components-demo/svg-icon/SvgIcon.vue')
 const Charts = () => import('@/views/main/components-demo/charts/Charts.vue')
+const ImageLabel = () => import('@/views/main/components-demo/image-label/ImageLabel.vue')
 
 export default {
   path: 'components-demo',
@@ -85,6 +86,15 @@ export default {
       meta: {
         title: '图表',
         fullPath: '/main/components-demo/charts'
+      }
+    },
+    {
+      path: 'image-label',
+      name: 'image-label',
+      component: ImageLabel,
+      meta: {
+        title: '图片标注',
+        fullPath: '/main/components-demo/image-label'
       }
     }
   ]

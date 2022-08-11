@@ -6,8 +6,8 @@
       :active-shape="activeShapeRef"
       :left="menuLeft"
       :top="menuTop"
-      @shape-click="handleShapeClick"
-      @handler-click="handleHandlerClick"
+      @create-shape="createShape"
+      @action-click="handleAction"
     ></RightClickMenu>
   </div>
 </template>
@@ -35,8 +35,18 @@ enum CANVAS_ENUM {
   CANVAS_HEIGHT = 700
 }
 const canvasRef = ref<fabric.Canvas>()
-const { rightClickMenuRef, activeShapeRef, menuLeft, menuTop, handleMouseDown, handleShapeClick, handleHandlerClick } =
-  useEvent(canvasRef)
+const {
+  rightClickMenuRef,
+  activeShapeRef,
+  menuLeft,
+  menuTop,
+  handleMouseDown,
+  handleShapeMoving,
+  handleMouseMove,
+  handleMouseUp,
+  createShape,
+  handleAction
+} = useEvent(canvasRef)
 
 // 初始化
 const init = () => {
@@ -46,15 +56,17 @@ const init = () => {
     fireRightClick: true, // 开启画布右键事件
     stopContextMenu: true // 禁止默认右键菜单
   }))
-  loadImage()
+  loadImage(canvas)
 
   // 事件处理
   canvas.on('mouse:down', handleMouseDown)
+  canvas.on('object:moving', handleShapeMoving)
+  canvas.on('mouse:move', handleMouseMove)
+  canvas.on('mouse:up', handleMouseUp)
 }
 
 // 加载图片
-const loadImage = () => {
-  const canvas = canvasRef.value!
+const loadImage = (canvas: fabric.Canvas) => {
   fabric.Image.fromURL('https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg', (img) => {
     const options = {
       scaleX: canvas.width! / img.width!,

@@ -1,45 +1,20 @@
-import { Ref } from 'vue'
 import { fabric } from 'fabric'
+import { Ref } from 'vue'
 import { CANVAS_COLOR, SHAPE_TYPE } from '../src/image-label-enum'
 
 export function useShape(canvasRef: Ref<fabric.Canvas | undefined>) {
-  // 增加矩形
-  const addRect = () => {
-    const canvas = canvasRef.value!
-    const rect = new fabric.Rect({
-      top: 30,
-      left: 30,
-      height: 100,
-      width: 150,
-      fill: CANVAS_COLOR.FILL_COLOR,
-      rx: 10, // x轴的圆角半径
-      ry: 10 // y轴的圆角半径
-    })
-    canvas.add(rect)
-    rect.on('selected', () => {
-      rect.set('fill', CANVAS_COLOR.ACTIVE_FILL_COLOR)
-    })
-    rect.on('deselected', () => {
-      rect.set('fill', CANVAS_COLOR.FILL_COLOR)
-    })
-
-    return rect
-  }
-
   // 增加直线
-  const addLine = () => {
-    const canvas = canvasRef.value!
-    const line = new fabric.Line([600, 300, 400, 400], {
-      stroke: '#f0f'
+  const addLine = (points: number[]) => {
+    const line = new fabric.Line(points.concat(points), {
+      stroke: CANVAS_COLOR.STROKE_SHALLOW_COLOR // 笔触颜色
     })
-    canvas.add(line)
+    canvasRef.value?.add(line)
 
     return line
   }
 
   // 增加折线
   const addPolyLine = () => {
-    const canvas = canvasRef.value!
     const polyLine = new fabric.Polyline(
       [
         {
@@ -60,26 +35,47 @@ export function useShape(canvasRef: Ref<fabric.Canvas | undefined>) {
         fill: 'transparent'
       }
     )
-    canvas.add(polyLine)
+    canvasRef.value?.add(polyLine)
 
     return polyLine
   }
 
+  // 增加矩形
+  const addRect = () => {
+    const rect = new fabric.Rect({
+      top: 30,
+      left: 30,
+      height: 100,
+      width: 150,
+      fill: CANVAS_COLOR.FILL_COLOR,
+      rx: 10, // x轴的圆角半径
+      ry: 10 // y轴的圆角半径
+    })
+    canvasRef.value?.add(rect)
+    rect.on('selected', () => {
+      rect.set('fill', CANVAS_COLOR.ACTIVE_FILL_COLOR)
+    })
+    rect.on('deselected', () => {
+      rect.set('fill', CANVAS_COLOR.FILL_COLOR)
+    })
+
+    return rect
+  }
+
   // 增加多边形
   const addPolygon = () => {
-    const canvas = canvasRef.value!
     const polygon = new fabric.Polygon(
       [
         {
-          x: 300,
-          y: 300
+          x: 0,
+          y: 0
         },
         {
-          x: 400,
-          y: 400
+          x: 100,
+          y: 100
         },
         {
-          x: 520,
+          x: 320,
           y: 350
         },
         {
@@ -87,8 +83,8 @@ export function useShape(canvasRef: Ref<fabric.Canvas | undefined>) {
           y: 280
         },
         {
-          x: 150,
-          y: 160
+          x: 420,
+          y: 30
         }
       ],
       {
@@ -103,7 +99,7 @@ export function useShape(canvasRef: Ref<fabric.Canvas | undefined>) {
     polygon.on('deselected', () => {
       polygon.set('fill', CANVAS_COLOR.FILL_COLOR)
     })
-    canvas.add(polygon)
+    canvasRef.value?.add(polygon)
 
     return polygon
   }

@@ -21,7 +21,7 @@ import { computed, onMounted, ref } from 'vue'
 import { ElDropdown, Placement } from 'element-plus'
 import { fabric } from 'fabric'
 
-import { SHAPE_TYPE, HANDLER_TYPE } from './image-label-enum'
+import { SHAPE_TYPE, ACTION_TYPE } from './image-label-enum'
 
 const props = withDefaults(
   defineProps<{
@@ -39,8 +39,8 @@ const props = withDefaults(
 )
 
 const emits = defineEmits<{
-  (e: 'shape-click', type: SHAPE_TYPE): void
-  (e: 'handler-click', type: HANDLER_TYPE): void
+  (e: 'create-shape', type: SHAPE_TYPE): void
+  (e: 'action-click', type: ACTION_TYPE): void
 }>()
 
 const elDropdownRef = ref<InstanceType<typeof ElDropdown>>()
@@ -86,26 +86,26 @@ const menuList = computed(() => {
     {
       label: '撤销',
       shortcut: 'Ctrl + Z',
-      type: HANDLER_TYPE.UNDO
+      type: ACTION_TYPE.UNDO
     },
     {
       label: '删除',
       shortcut: 'Del',
-      type: HANDLER_TYPE.DELETE
+      type: ACTION_TYPE.DELETE
     }
   ].filter((item) => {
-    if (item.type === HANDLER_TYPE.DELETE) {
+    if (item.type === ACTION_TYPE.DELETE) {
       return props.activeShape
     }
     return true
   })
 })
 
-const handleMenuItemClick = (type: SHAPE_TYPE | HANDLER_TYPE) => {
+const handleMenuItemClick = (type: SHAPE_TYPE | ACTION_TYPE) => {
   if (Object.values(SHAPE_TYPE).includes(type as SHAPE_TYPE)) {
-    emits('shape-click', type as SHAPE_TYPE)
+    emits('create-shape', type as SHAPE_TYPE)
   } else {
-    emits('handler-click', type as HANDLER_TYPE)
+    emits('action-click', type as ACTION_TYPE)
   }
 }
 
@@ -120,7 +120,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
     // 1.1delete
     const isDeleteKeyDown = keyCodeGroup[0] === 8 || keyCodeGroup[0] === 46
     if (isDeleteKeyDown) {
-      emits('handler-click', HANDLER_TYPE.DELETE)
+      emits('action-click', ACTION_TYPE.DELETE)
       keyCodeGroup = []
     }
   } else if (keyCodeGroup.length === 1) {
@@ -130,9 +130,11 @@ const handleKeyDown = (e: KeyboardEvent) => {
       keyCodeGroup.push(keyCode)
       const [, secondKeyCode] = keyCodeGroup
       // 2.1.1ctrl + z
-      secondKeyCode === 90 && emits('handler-click', HANDLER_TYPE.UNDO)
+      secondKeyCode === 90 && emits('action-click', ACTION_TYPE.UNDO)
 
       keyCodeGroup.pop()
+    } else {
+      keyCodeGroup = []
     }
   }
 }
