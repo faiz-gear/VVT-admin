@@ -1,9 +1,9 @@
 // 填充颜色
 export enum CANVAS_COLOR {
-  FILL_COLOR = 'rgba(255,255,255,0.5)',
-  ACTIVE_FILL_COLOR = 'rgba(255,0, 0, .5)',
-  STROKE_SHALLOW_COLOR = 'rgba(0, 0, 0, 0.2)',
-  STROKE_DEEP_COLOR = '#000'
+  FILL_COLOR = 'transparent',
+  ACTIVE_FILL_COLOR = 'rgba(255, 0, 135, .5)',
+  STROKE_SHALLOW_COLOR = '#000',
+  STROKE_DEEP_COLOR = '#ff0087'
 }
 
 // 鼠标按下事件的button值
@@ -16,14 +16,18 @@ export enum MOUSE_DOWN_EVENT_BUTTON {
 // 图形形状类型
 export enum SHAPE_TYPE {
   LINE = 'line',
-  POLY_LINE = 'polyline',
+  POLYLINE = 'polyline',
   RECT = 'rect',
   POLYGON = 'polygon'
 }
 
 // 操作类型
 export enum ACTION_TYPE {
-  UNDO = 'undo',
-  DELETE = 'delete',
-  MOVE = 'move'
+  SELECT = 'select', // 选择图形
+  UNDO = 'undo', // 撤回
+  DELETE = 'delete', // 删除图形
+  MOVE = 'move', // 移动图形
+  ROTATE = 'rotate', // 旋转图形
+  SCALE = 'scale', // 缩放图形
+  PANNINING = 'panning' // 平移画布
 }

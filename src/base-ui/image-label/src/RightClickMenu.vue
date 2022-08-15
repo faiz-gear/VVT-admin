@@ -73,7 +73,7 @@ const menuList = computed(() => {
     },
     {
       label: '创建折线',
-      type: SHAPE_TYPE.POLY_LINE
+      type: SHAPE_TYPE.POLYLINE
     },
     {
       label: '创建矩形',
@@ -82,6 +82,14 @@ const menuList = computed(() => {
     {
       label: '创建多边形',
       type: SHAPE_TYPE.POLYGON
+    },
+    {
+      label: '选择',
+      type: ACTION_TYPE.SELECT
+    },
+    {
+      label: '平移画布',
+      type: ACTION_TYPE.PANNINING
     },
     {
       label: '撤销',
